@@ -2,15 +2,14 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ArrowForwardIos, HomeOutlined } from "@mui/icons-material";
 import logo from "../../assets/logo.svg";
-import userprofile from "../../assets/Abishiek.jpg";
 import "./Sidebar.css";
 
-const Sidebar = ({ closeToggle }) => {
-  // const handleSidebar = () => {
-  //   if (closeToggle) {
-  //     closeToggle(false);
-  //   }
-  // };
+const Sidebar = ({ closeToggle, user }) => {
+  const handleSidebar = () => {
+    if (closeToggle) {
+      closeToggle(false);
+    }
+  };
 
   return (
     <div className="sidebar">
@@ -70,10 +69,14 @@ const Sidebar = ({ closeToggle }) => {
         </div>
       </div>
 
-      <Link to={`user-profile`} className="sidebar-user">
+      <Link
+        to={`/user-profile/${user?._id}`}
+        className="sidebar-user"
+        onClick={handleSidebar}
+      >
         <div className="sidebar-user-info">
-          <img src={userprofile} alt="" />
-          <p>Abishiek</p>
+          <img src={user?.image} alt="" />
+          <p>{user?.userName}</p>
         </div>
         <ArrowForwardIos fontSize="small" />
       </Link>

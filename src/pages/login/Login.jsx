@@ -1,11 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import GoogleLogin from "react-google-login";
 import logo from "../../assets/logo.svg";
+import { client } from "../../client";
 import "./Login.css";
 
 const Login = () => {
-  const handleResponse = (response) => {};
+  const navigate = useNavigate();
+
+  const handleResponse = (response) => {
+    localStorage.setItem("user", JSON.stringify(response.profileObj));
+    const { name, googleId, imageUrl } = response.profileObj;
+
+    const doc = {
+      _id: googleId,
+      _type: "user",
+      userName: name,
+      image: imageUrl,
+    };
+
+    client.createIfNotExists(doc).then(() => {
+      navigate("/", { replace: true });
+    });
+  };
 
   return (
     <div className="login-container">
@@ -16,7 +34,7 @@ const Login = () => {
 
       <div>
         <GoogleLogin
-          clientId=""
+          clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
           render={(renderProps) => (
             <button
               type="button"
