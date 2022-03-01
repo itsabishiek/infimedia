@@ -69,17 +69,21 @@ const Sidebar = ({ closeToggle, user }) => {
         </div>
       </div>
 
-      <Link
-        to={`/user-profile/${user?._id}`}
-        className="sidebar-user"
-        onClick={handleSidebar}
-      >
-        <div className="sidebar-user-info">
-          <img src={user?.image} alt="" />
-          <p>{user?.userName}</p>
-        </div>
-        <ArrowForwardIos fontSize="small" />
-      </Link>
+      {user ? (
+        <Link
+          to={`/user-profile/${user?._id}`}
+          className="sidebar-user"
+          onClick={handleSidebar}
+        >
+          <div className="sidebar-user-info">
+            <img src={user?.image} alt="" />
+            <p>{user?.userName}</p>
+          </div>
+          <ArrowForwardIos fontSize="small" />
+        </Link>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
     </div>
   );
 };

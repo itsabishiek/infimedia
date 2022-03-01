@@ -2,7 +2,7 @@ import { Menu, Close } from "@mui/icons-material";
 import React, { useState, useEffect } from "react";
 import { Sidebar } from "../../components";
 import logo from "../../assets/logo.svg";
-import profile from "../../assets/Abishiek.jpg";
+// import profile from "../../assets/Abishiek.jpg";
 import "./Home.css";
 import { Link, Route, Routes } from "react-router-dom";
 import { userQuery } from "../../utils/data";
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
           <Link to={`/user-profile/${user?._id}`}>
             <img
-              src={profile}
+              src={user?.image}
               alt=""
               style={{
                 height: 40,
