@@ -1,5 +1,5 @@
 import { Menu, Close } from "@mui/icons-material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Sidebar } from "../../components";
 import logo from "../../assets/logo.svg";
 // import profile from "../../assets/Abishiek.jpg";
@@ -10,24 +10,29 @@ import Pins from "../pins/Pins";
 import UserProfile from "../../pages/userProfile/UserProfile";
 import { client } from "../../client";
 
-const Home = () => {
+const Home = ({ alert, setAlert }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState();
+  const scrollRef = useRef();
 
   const userInfo =
     localStorage.getItem("user") !== "undefined"
       ? JSON.parse(localStorage.getItem("user"))
       : localStorage.clear();
 
+  console.log(userInfo);
+
   useEffect(() => {
-    const query = userQuery(userInfo?.googleId);
+    const query = userQuery(userInfo?.uid);
 
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  }, [userInfo?.googleId]);
+  }, [userInfo?.uid]);
 
-  // console.log(user);
+  useEffect(() => {
+    scrollRef.current.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="home">
@@ -46,6 +51,7 @@ const Home = () => {
             <img src={logo} alt="" height={45} />
             <p>InfiMedia</p>
           </div>
+
           <Link to={`/user-profile/${user?._id}`}>
             <img
               src={user?.image}
@@ -68,15 +74,18 @@ const Home = () => {
                 onClick={() => setToggleSidebar(false)}
               />
             </div>
-            <Sidebar closeToggle={setToggleSidebar} user={user && user} />
+            <Sidebar closeToggle={setToggleSidebar} />
           </div>
         )}
       </div>
 
-      <div className="home-main">
+      <div className="home-main" ref={scrollRef}>
         <Routes>
           <Route path="/*" element={<Pins />} />
-          <Route path="/user-profile/:userId" element={<UserProfile />} />
+          <Route
+            path="/user-profile/:userId"
+            element={<UserProfile alert={alert} setAlert={setAlert} />}
+          />
         </Routes>
       </div>
     </div>

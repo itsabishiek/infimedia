@@ -95,3 +95,21 @@
   font-size: 16px;
   font-weight: 550;
 }
+
+.sidebar-userLogin {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 20px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-userLogin:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sidebar-userLogin h3 {
+  margin-left: 10px;
+  font-size: 17px;
+}

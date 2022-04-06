@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ArrowForwardIos, HomeOutlined } from "@mui/icons-material";
+import { ArrowForwardIos, HomeOutlined, Login } from "@mui/icons-material";
 import logo from "../../assets/logo.svg";
 import "./Sidebar.css";
 
@@ -10,6 +10,8 @@ const Sidebar = ({ closeToggle, user }) => {
       closeToggle(false);
     }
   };
+
+  console.log(user);
 
   return (
     <div className="sidebar">
@@ -82,7 +84,12 @@ const Sidebar = ({ closeToggle, user }) => {
           <ArrowForwardIos fontSize="small" />
         </Link>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link to="/auth">
+          <div className="sidebar-userLogin">
+            <Login />
+            <h3>Login</h3>
+          </div>
+        </Link>
       )}
     </div>
   );
