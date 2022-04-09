@@ -1,0 +1,133 @@
+.pin-container {
+  margin: 8px;
+}
+
+.pin-inner {
+  position: relative;
+  cursor: zoom-in;
+  border-radius: 10px;
+  width: auto;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.pin-img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pin-hover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.pin-hover-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pin-hover-download {
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.pin-hover-download:hover {
+  opacity: 1;
+}
+
+.pin-hover-download-inner {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+  margin-right: 3px;
+  transition: 0.3s;
+}
+
+.pin-hover-download:hover .pin-hover-download-inner {
+  display: block;
+}
+
+.pin-hover-save {
+  background: var(--primary-color);
+  border: none;
+  outline: none;
+  padding: 5px;
+  color: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.pin-hover-save:hover {
+  opacity: 1;
+}
+
+.pin-hover-save-inner {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+  transition: 0.3s;
+}
+
+.pin-hover-save:hover .pin-hover-save-inner {
+  display: block;
+}
+
+.pin-hover-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pin-destination {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 30px;
+  padding: 3px;
+  opacity: 0.8;
+}
+
+.pin-destination:hover {
+  opacity: 1;
+}
+
+.pin-destination span {
+  margin-right: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pin-postedby {
+  display: flex;
+  align-items: center;
+}
+
+.pin-postedby img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.pin-postedby h4 {
+  white-space: nowrap;
+}

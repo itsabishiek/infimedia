@@ -17,3 +17,24 @@
 .auth-logo img {
   margin-right: 10px;
 }
+
+.auth-inner {
+  width: 60%;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .auth-inner {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .auth-container {
+    height: 95vh;
+  }
+
+  .auth-inner {
+    width: 90%;
+  }
+}

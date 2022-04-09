@@ -10,6 +10,7 @@
   display: flex;
   height: 100vh;
   flex: 0 1 auto;
+  position: fixed;
 }
 
 .sidebar-mobile {
@@ -19,6 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 900;
 }
 
 .sidebar-nav {
@@ -26,7 +30,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
 }
 
 .logo-wrapper {
@@ -52,7 +56,12 @@
 
 .home-main {
   width: 100%;
-  flex: 1 1 0%;
+  /* flex: 1 1 0%; */
+  margin-left: 250px;
+}
+
+.marTop {
+  margin-top: 40px;
 }
 
 @keyframes slideIn {
@@ -74,10 +83,20 @@
   .sidebar-wrapper {
     display: none;
   }
+
+  .home-main {
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 768px) {
   .sidebar-mobile {
     display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .marTop {
+    margin-top: 60px;
   }
 }

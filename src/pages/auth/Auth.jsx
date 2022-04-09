@@ -61,7 +61,7 @@ const Auth = ({ alert, setAlert }) => {
         <h2>InfiMedia</h2>
       </div>
 
-      <div style={{ width: "60%", marginTop: 20 }}>
+      <div className="auth-inner">
         <AppBar
           position="static"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.01)" }}

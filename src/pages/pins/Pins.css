@@ -1,0 +1,21 @@
+.pins-container {
+  min-height: 100vh;
+}
+
+.pins-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+}
+
+.pins-inner {
+  margin-top: 0;
+  padding: 20px;
+}
+
+@media (max-width: 500px) {
+  .pins-inner {
+    margin-top: 65px;
+  }
+}

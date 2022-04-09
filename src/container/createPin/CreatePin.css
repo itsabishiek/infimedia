@@ -1,0 +1,152 @@
+.createpin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.createpin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 15px;
+  width: 80%;
+  height: 100%;
+}
+
+.createpin-left {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.createpin-left-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dotted var(--primary-color);
+  width: 100%;
+  padding: 10px;
+  height: 100%;
+}
+
+.createpin-imageAsset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.createpin-imageAsset-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.createpin-imageAsset-inner span {
+  font-weight: 500;
+}
+
+.createpin-imageAsset-recommend {
+  position: absolute;
+  bottom: 10px;
+  color: #bebebe;
+  text-align: center;
+}
+
+.uploaded-img {
+  position: relative;
+  height: 100%;
+}
+
+.uploaded-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.uploaded-img button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border: 1px solid var(--primary-color);
+  background: #fff;
+  color: var(--primary-color);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.createpin-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.createpin-user {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.createpin-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.createpin-user p {
+  font-weight: 500;
+}
+
+.createpin-right-btn {
+  display: flex;
+  justify-self: flex-end;
+  align-items: flex-end;
+  margin-top: 20px;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .createpin {
+    height: unset;
+    margin-top: 50px;
+  }
+
+  .createpin-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .createpin-left-inner {
+    height: 200px;
+  }
+
+  .createpin-imageAsset-recommend {
+    font-size: 13px;
+  }
+
+  .createpin-right {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .createpin {
+    margin-top: 0;
+  }
+}

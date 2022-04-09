@@ -17,9 +17,28 @@
 
 body {
   margin: 0;
+  position: relative;
   font-family: "Roboto", sans-serif;
   background: var(--bg-secondary);
   color: var(--text-color);
+}
+
+::selection {
+  background: var(--primary-color);
+  color: #fafafa;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.7);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 code {

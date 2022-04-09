@@ -14,7 +14,7 @@ const AlertBar = ({ alert, setAlert }) => {
     <Snackbar open={alert.open} autoHideDuration={3000} onClose={handleClose}>
       <Alert
         onClose={handleClose}
-        variant="outlined"
+        variant="filled"
         elevation={10}
         severity={alert.type}
       >

@@ -30,7 +30,7 @@ const Signup = ({ alert, setAlert }) => {
         password
       );
 
-      console.log(user);
+      // console.log(user);
 
       setAlert({
         open: true,

@@ -1,4 +1,4 @@
-import { Menu, Close } from "@mui/icons-material";
+import { Menu, Close, ArrowDropDown } from "@mui/icons-material";
 import React, { useState, useEffect, useRef } from "react";
 import { Sidebar } from "../../components";
 import logo from "../../assets/logo.svg";
@@ -9,18 +9,18 @@ import { userQuery } from "../../utils/data";
 import Pins from "../pins/Pins";
 import UserProfile from "../../pages/userProfile/UserProfile";
 import { client } from "../../client";
+import { Button } from "@mui/material";
+import { fetchUser } from "../../utils/fetchUser";
 
 const Home = ({ alert, setAlert }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [toggleNavbar, setToggleNavbar] = useState(false);
   const [user, setUser] = useState();
   const scrollRef = useRef();
 
-  const userInfo =
-    localStorage.getItem("user") !== "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+  const userInfo = fetchUser();
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   useEffect(() => {
     const query = userQuery(userInfo?.uid);
@@ -52,18 +52,52 @@ const Home = ({ alert, setAlert }) => {
             <p>InfiMedia</p>
           </div>
 
-          <Link to={`/user-profile/${user?._id}`}>
-            <img
-              src={user?.image}
-              alt=""
+          {user ? (
+            <div
               style={{
-                height: 40,
-                width: 40,
-                objectFit: "cover",
-                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "0.5s",
               }}
-            />
-          </Link>
+            >
+              <Link to={`/user-profile/${user?._id}`}>
+                <img
+                  src={user?.image}
+                  alt=""
+                  style={{
+                    height: 40,
+                    width: 40,
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+              </Link>
+
+              <ArrowDropDown
+                fontSize="large"
+                style={{ cursor: "pointer", marginLeft: 10 }}
+                onClick={() => setToggleNavbar(!toggleNavbar)}
+              />
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Link to="/auth">
+                <Button variant="contained">Login</Button>
+              </Link>
+              <ArrowDropDown
+                fontSize="large"
+                style={{ cursor: "pointer", marginLeft: 10 }}
+                onClick={() => setToggleNavbar(!toggleNavbar)}
+              />
+            </div>
+          )}
         </div>
 
         {toggleSidebar && (
@@ -74,16 +108,29 @@ const Home = ({ alert, setAlert }) => {
                 onClick={() => setToggleSidebar(false)}
               />
             </div>
-            <Sidebar closeToggle={setToggleSidebar} />
+            <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>
         )}
       </div>
 
-      <div className="home-main" ref={scrollRef}>
+      <div
+        className={`home-main ${toggleNavbar === true && "marTop"}`}
+        ref={scrollRef}
+      >
         <Routes>
-          <Route path="/*" element={<Pins />} />
           <Route
-            path="/user-profile/:userId"
+            path="/*"
+            element={
+              <Pins
+                user={user && user}
+                toggleNavbar={toggleNavbar}
+                alert={alert}
+                setAlert={setAlert}
+              />
+            }
+          />
+          <Route
+            path="/user/:userId"
             element={<UserProfile alert={alert} setAlert={setAlert} />}
           />
         </Routes>
