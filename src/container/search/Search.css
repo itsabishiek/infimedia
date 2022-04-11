@@ -1,0 +1,8 @@
+.search-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+  color: var(--primary-color);
+}

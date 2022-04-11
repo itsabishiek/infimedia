@@ -23,7 +23,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user, toggleNavbar }) => {
 
         <div className="navbar-items">
           {user && (
-            <Link to={`/user-profile/${user?._id}`} className="navbar-userImg">
+            <Link to={`/user/${user?._id}`} className="navbar-userImg">
               <img src={user?.image} alt="" />
             </Link>
           )}

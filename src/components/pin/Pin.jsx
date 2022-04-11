@@ -105,7 +105,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                       marginRight: 4,
                     }}
                   />
-                  <span>{destination?.slice(8, 17)}</span>
+                  <span>{destination?.slice(8, 20)}...</span>
                 </a>
               )}
             </div>

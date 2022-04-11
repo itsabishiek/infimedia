@@ -1,0 +1,152 @@
+.pin-detail-container {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+}
+
+.pin-detail-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pin-detail-img img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.pin-detail-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pin-detail-postedBy {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pin-detail-postedBy img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.pin-detail-postedBy h3 {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.pin-detail-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-detail-download a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  padding: 7px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pin-detail-hover {
+  background: var(--primary-color);
+  border: none;
+  outline: none;
+  padding: 7px;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pin-detail-hover span {
+  margin-right: 5px;
+  font-weight: 550;
+}
+
+.pin-detail-title {
+  font-size: 25px;
+  margin-bottom: 6px;
+}
+
+.pin-detail-comments-inner {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+  width: 80%;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.pin-detail-comments-inner h3 {
+  color: var(--primary-color);
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.pin-detail-comments {
+  max-height: 400px;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.pin-detail-comment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.pin-detail-comment p {
+  padding: 5px;
+  margin-bottom: 1px;
+}
+
+.pin-detail-comment img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.pin-detail-post-comment {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+  width: 100%;
+}
+
+.pin-detail-post-comment img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .pin-detail-comments-inner {
+    width: 100%;
+  }
+}
