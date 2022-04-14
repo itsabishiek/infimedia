@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { auth } from "../../firebase";
@@ -10,7 +9,8 @@ import {
   userSavedPinsQuery,
 } from "../../utils/data";
 import { client } from "../../client";
-import { Spinner } from "../../components";
+import { MasonryLayout, Spinner } from "../../components";
+import { Logout } from "@mui/icons-material";
 
 const UserProfile = ({ alert, setAlert }) => {
   const [user, setUser] = useState(null);
@@ -61,17 +61,55 @@ const UserProfile = ({ alert, setAlert }) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <Button variant="contained" onClick={logOut} style={{ color: "white" }}>
-        Logout
-      </Button>
+    <div className="user-profile">
+      <div className="user-profile-container">
+        <div className="user-profile-inner">
+          <div className="user-profile-img-container">
+            <img
+              src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              alt="user-pic"
+            />
+            <img src={user?.image} alt="" />
+          </div>
+          <h1 className="user-profile-title">{user?.userName}</h1>
+          <div className="user-profile-logout" onClick={logOut}>
+            <Logout />
+          </div>
+        </div>
+
+        <div className="user-profile-content">
+          <button
+            type="button"
+            onClick={(e) => {
+              setText(e.target.textContent);
+              setActiveBtn("created");
+            }}
+            className={`${
+              activeBtn === "created" ? "activeBtnStyles" : "notActiveBtnStyles"
+            }`}
+          >
+            Created
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              setText(e.target.textContent);
+              setActiveBtn("saved");
+            }}
+            className={`${
+              activeBtn === "saved" ? "activeBtnStyles" : "notActiveBtnStyles"
+            }`}
+          >
+            Saved
+          </button>
+        </div>
+
+        <div>
+          <MasonryLayout pins={pins} />
+        </div>
+
+        {pins?.length === 0 && <div>No Pins Found!</div>}
+      </div>
     </div>
   );
 };
