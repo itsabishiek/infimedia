@@ -17,5 +17,6 @@
 @media (max-width: 500px) {
   .pins-inner {
     margin-top: 65px;
+    padding: 10px;
   }
 }
