@@ -14,9 +14,15 @@
   padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .pins-inner {
+    margin-top: 10vh;
+  }
+}
+
 @media (max-width: 500px) {
   .pins-inner {
-    margin-top: 65px;
+    margin-top: 10vh;
     padding: 10px;
   }
 }
