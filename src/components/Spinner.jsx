@@ -7,7 +7,7 @@ const Spinner = ({ message }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "70vh",
+        height: "75vh",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
