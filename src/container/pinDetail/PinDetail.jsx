@@ -163,11 +163,24 @@ const PinDetail = ({ user }) => {
               <div className="pin-detail-comments">
                 {pinDetail?.comments?.map((comment, index) => (
                   <div className="pin-detail-comment" key={index}>
-                    <p style={{ color: "black", fontWeight: "bold" }}>
-                      {comment.comment}
-                    </p>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <img src={comment?.postedBy?.image} alt="" />
+                    <img src={comment?.postedBy?.image} alt="" />
+
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "left",
+                      }}
+                    >
+                      <p
+                        style={{
+                          color: "black",
+                          fontWeight: "bold",
+                          marginBottom: 2,
+                        }}
+                      >
+                        {comment.comment}
+                      </p>
                       <p>{comment?.postedBy?.userName}</p>
                     </div>
                   </div>

@@ -109,17 +109,12 @@
 
 .pin-detail-comment {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   width: 100%;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.08);
   padding: 6px;
   border-radius: 6px;
   margin-bottom: 5px;
-}
-
-.pin-detail-comment p {
-  padding: 5px;
-  margin-bottom: 1px;
 }
 
 .pin-detail-comment img {
