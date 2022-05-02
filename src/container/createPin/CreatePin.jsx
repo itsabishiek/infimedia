@@ -191,8 +191,9 @@ const CreatePin = ({ user, alert, setAlert }) => {
                   label="Select Category"
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  {categories?.map((category) => (
+                  {categories?.map((category, i) => (
                     <MenuItem
+                      key={i}
                       value={category?.title}
                       style={{ textTransform: "capitalize" }}
                     >

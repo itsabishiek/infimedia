@@ -1,6 +1,6 @@
-import { Download, Save } from "@mui/icons-material";
+import { Delete, Download, Save } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { client } from "../../client";
 import { v4 as uuidv4 } from "uuid";
 import { MasonryLayout, Spinner } from "../../components";
@@ -14,6 +14,7 @@ const PinDetail = ({ user }) => {
   const [pinDetail, setPinDetail] = useState(null);
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
+  const navigate = useNavigate();
 
   const fetchPinDetailQuery = () => {
     let query = fetchPinDetail(pinId);
@@ -93,6 +94,12 @@ const PinDetail = ({ user }) => {
     }
   };
 
+  const deletePin = (id) => {
+    client.delete(id).then(() => {
+      window.location.reload();
+    });
+  };
+
   console.log(pinDetail);
   console.log(pins);
   // console.log(user);
@@ -102,6 +109,17 @@ const PinDetail = ({ user }) => {
       <div className="pin-detail-container">
         <div className="pin-detail-img">
           <img src={pinDetail?.image.asset.url} alt="" />
+
+          <button
+            className="btn-delete"
+            variant="text"
+            onClick={() => {
+              deletePin(pinDetail?._id);
+              navigate("/", { replace: true });
+            }}
+          >
+            <Delete />
+          </button>
         </div>
 
         <div className="pin-detail-inner">

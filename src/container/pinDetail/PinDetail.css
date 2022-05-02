@@ -6,6 +6,7 @@
 }
 
 .pin-detail-img {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,6 +139,23 @@
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: red;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
