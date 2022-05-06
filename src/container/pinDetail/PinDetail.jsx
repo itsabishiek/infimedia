@@ -1,4 +1,10 @@
-import { Delete, Download, Save } from "@mui/icons-material";
+import {
+  Delete,
+  Download,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  Save,
+} from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { client } from "../../client";
@@ -14,6 +20,7 @@ const PinDetail = ({ user }) => {
   const [pinDetail, setPinDetail] = useState(null);
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
+  const [showComments, setShowComments] = useState(true);
   const navigate = useNavigate();
 
   const fetchPinDetailQuery = () => {
@@ -176,44 +183,64 @@ const PinDetail = ({ user }) => {
           }}
         >
           <div className="pin-detail-comments-inner">
-            <h3>Comments</h3>
-            {pinDetail?.comments ? (
-              <div className="pin-detail-comments">
-                {pinDetail?.comments?.map((comment, index) => (
-                  <div className="pin-detail-comment" key={index}>
-                    <img src={comment?.postedBy?.image} alt="" />
+            <div className="pin-detail-comments-header">
+              <h3>Comments</h3>
+              {showComments && (
+                <KeyboardArrowDown
+                  color="primary"
+                  style={{ marginTop: 3, marginLeft: 5, cursor: "pointer" }}
+                  onClick={() => setShowComments(!showComments)}
+                />
+              )}
 
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "left",
-                      }}
-                    >
-                      <p
-                        style={{
-                          color: "black",
-                          fontWeight: "bold",
-                          marginBottom: 2,
-                        }}
-                      >
-                        {comment.comment}
-                      </p>
-                      <p>{comment?.postedBy?.userName}</p>
-                    </div>
+              {!showComments && (
+                <KeyboardArrowUp
+                  color="primary"
+                  style={{ marginTop: 3, marginLeft: 5, cursor: "pointer" }}
+                  onClick={() => setShowComments(!showComments)}
+                />
+              )}
+            </div>
+            {showComments && (
+              <div style={{ width: "100%" }}>
+                {pinDetail?.comments ? (
+                  <div className="pin-detail-comments">
+                    {pinDetail?.comments?.reverse()?.map((comment, index) => (
+                      <div className="pin-detail-comment" key={index}>
+                        <img src={comment?.postedBy?.image} alt="" />
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "left",
+                          }}
+                        >
+                          <p
+                            style={{
+                              color: "black",
+                              fontWeight: "bold",
+                              marginBottom: 2,
+                            }}
+                          >
+                            {comment.comment}
+                          </p>
+                          <p>{comment?.postedBy?.userName}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                style={{
-                  display: "flex",
-                  height: 75,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <h4>No Comments</h4>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      height: 75,
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <h4>No Comments</h4>
+                  </div>
+                )}
               </div>
             )}
 

@@ -93,17 +93,21 @@
   background: rgba(0, 0, 0, 0.06);
   width: 80%;
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
 }
 
-.pin-detail-comments-inner h3 {
+.pin-detail-comments-header {
+  display: flex;
+}
+
+.pin-detail-comments-header h3 {
   color: var(--primary-color);
   font-size: 23px;
   margin-bottom: 15px;
 }
 
 .pin-detail-comments {
-  max-height: 400px;
+  height: 150px;
   overflow-y: scroll;
   width: 100%;
 }
